@@ -18,7 +18,6 @@ export class TodoService {
             author: createTodoBody.author,
             description: createTodoBody.description,
             priority: createTodoBody.priority
-
         })
     }
 
@@ -32,6 +31,7 @@ export class TodoService {
 
         return todoId;
     }
+
 
     deleteTodo(id: number) {
         const todoIndex = this.todo.findIndex(todo => todo.id == id);

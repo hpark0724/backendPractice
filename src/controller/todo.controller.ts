@@ -1,7 +1,9 @@
-import { Body, Controller, Get, Post, Put, Delete, Param, ParseIntPipe } from '@nestjs/common';
+import { Body, Controller, Get, Post, Put, Delete, Param, ParseIntPipe, UseGuards } from '@nestjs/common';
 import { TodoService } from 'src/service/todo.service';
 import { CreateTodoDto, UpdateTodoDto } from 'src/dto/todo';
+import { AuthGuard } from 'src/guard/auth.guard';
 
+@UseGuards(AuthGuard)
 @Controller('todo')
 export class TodoController {
     constructor(private readonly todoService: TodoService) { }
@@ -25,5 +27,4 @@ export class TodoController {
     removeTodo(@Param('id', ParseIntPipe) id: number) {
         return this.todoService.deleteTodo(id);
     }
-
 }
