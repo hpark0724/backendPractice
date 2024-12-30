@@ -14,8 +14,10 @@ export class AuthController {
     @Post('login')
     login(@Body() loginBody: LoginDto) {
         return this.authService.login({
-            username: loginBody.username,
+
+            email: loginBody.email,
             password: loginBody.password
         });
     }
 }
+

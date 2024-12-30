@@ -1,12 +1,14 @@
 import { PartialType } from '@nestjs/mapped-types';
 
 interface RegisterBody {
-    username: string;
+    name: string;
+    email: string;
     password: string;
 }
 
 export class RegisterDto implements RegisterBody {
-    username: string;
+    name: string;
+    email: string;
     password: string;
 }
 
