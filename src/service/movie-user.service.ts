@@ -10,7 +10,7 @@ export class MovieUserService {
 
     async create(createUserDto: CreateMovieUserDto): Promise<CreateMovieUserResultDto> {
         const existingUser = await this.em.findOne(MovieUser, { email: createUserDto.email });
-        
+
         if (existingUser) {
             throw new HttpException('이미 존재하는 이메일입니다', HttpStatus.BAD_REQUEST);
         }
