@@ -53,7 +53,7 @@ export class ReservationController {
     @Get('history/:userId')
     async getReservationHistory(
         @Param('userId') userId: number,
-        @Query() query: ReservationHistoryTypeDto,
+        @Query('type') query: ReservationHistoryTypeDto,
         @Query('page') page: number = 1,
         @Query('limit') limit: number = 10,
     ) {
