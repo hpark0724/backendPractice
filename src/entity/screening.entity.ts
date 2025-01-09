@@ -27,4 +27,13 @@ export class Screening {
 
     @Property()
     reservedSeats: number = 0;
+
+    @Property({ nullable: true })
+    deletedAt?: Date;
+
+    @Property({ persist: false })
+    get isDeleted(): boolean {
+        return !!this.deletedAt;
+    }
+
 }

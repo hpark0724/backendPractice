@@ -12,6 +12,7 @@ import {
 import { ReservationService } from '../service/reservation.service';
 import { ScreeningService } from '../service/screening.service';
 import { ReservationDetailDto } from 'src/dto/reservation'
+import { ReservationHistoryTypeDto } from 'src/dto/reservation'
 
 
 @Controller('reservations')
@@ -52,10 +53,11 @@ export class ReservationController {
     @Get('history/:userId')
     async getReservationHistory(
         @Param('userId') userId: number,
-        @Query('type') type: 'upcoming' | 'past' = 'upcoming',
+        @Query() query: ReservationHistoryTypeDto,
         @Query('page') page: number = 1,
         @Query('limit') limit: number = 10,
     ) {
+        const { type } = query;
         return this.reservationService.findUserReservationHistory(
             userId,
             type,
@@ -80,7 +82,8 @@ export class ReservationController {
     // TODO: implement reservation cancellation endpoint
     @Delete(':id')
     async cancelReservation(@Param('id') userId: number) {
-        const isCancelled = await this.reservationService.cancelReservation(userId);
+        return await this.reservationService.cancelReservation(userId);
+
     }
     // TODO: implement reservation modification endpoint
     @Put(':id')

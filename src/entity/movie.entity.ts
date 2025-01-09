@@ -1,6 +1,8 @@
-import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
+import { Entity, PrimaryKey, Property, Index } from '@mikro-orm/core';
+
 
 @Entity()
+@Index({ name: 'genre_fulltext_idx', properties: ['genre'] })
 export class Movie {
     @PrimaryKey()
     id!: number;
@@ -8,8 +10,9 @@ export class Movie {
     @Property()
     title!: string;
 
-    @Property({ nullable: true })
-    genre?: string;
+    // @Property({ nullable: true })
+    @Property({ columnType: 'text' })
+    genre!: string;
 
     @Property()
     duration!: number;

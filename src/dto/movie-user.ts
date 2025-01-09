@@ -7,3 +7,4 @@ export class CreateMovieUserResultDto {
     id: number;
     email: string;
 }
+

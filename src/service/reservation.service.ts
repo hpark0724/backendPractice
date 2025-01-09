@@ -153,10 +153,6 @@ export class ReservationService {
         const userReservation = await this.em.findOne(
             Reservation,
             { user: userId },
-            {
-                populate: ['screening', 'screening.movie'],
-                orderBy: { screening: { startTime: 'DESC ' } },
-            }
         );
 
         userReservation.deletedAt = new Date();

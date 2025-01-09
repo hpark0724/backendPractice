@@ -4,7 +4,7 @@ import {
     Post,
     Delete,
     Body,
-    Put,
+    Patch,
     Param,
     Query,
 } from '@nestjs/common';
@@ -41,7 +41,7 @@ export class MovieController {
     }
 
     // TODO: implement update endpoint
-    @Put(':id')
+    @Patch(':id')
     async update(@Param('id') id: number, @Body() updateData: Partial<Movie>) {
         return this.movieService.updateMovie(id, updateData);
     }

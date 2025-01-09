@@ -1,10 +1,14 @@
 import { EntityManager } from '@mikro-orm/mysql';
 import { Injectable } from '@nestjs/common';
 import { Movie } from '../entity/movie.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class MovieService {
     constructor(private readonly em: EntityManager) { }
+    // constructor(@InjectRepository(Movie)
+    // private readonly movieRepository: Repository<Movie>,
+    // ) { }
 
     async findAll(includeDeleted: boolean = false) {
         const qb = this.em.createQueryBuilder(Movie);
@@ -73,19 +77,19 @@ export class MovieService {
 
     // TODO: implement search by genre
     async getGenre(searchGenre: string, includeDeleted: boolean = false) {
-        const qb = this.em.createQueryBuilder(Movie);
+        const qb = this.em.createQueryBuilder(Movie, 'm');
 
         if (!includeDeleted) {
             qb.where({ deleteAt: null });
         }
 
-        qb.andWhere({ genre: searchGenre })
+        // qb.andWhere({ genre: searchGenre })
+        qb.andWhere(`MATCH(genre) AGAINST (? IN BOOLEAN MODE)`, [searchGenre]);
 
-        const movies = await qb.getResultList();
-
-        return movies
+        return qb.getResultList();
 
     }
+
 
 
 }
