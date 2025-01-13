@@ -20,7 +20,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@mikro-orm/core": "^6.4.2",
+    "@mikro-orm/core": "^6.4.3",
+    "@mikro-orm/mariadb": "^6.4.3",
     "@mikro-orm/migrations": "^6.4.2",
     "@mikro-orm/mysql": "^6.4.2",
     "@mikro-orm/nestjs": "^6.0.2",
@@ -45,7 +46,7 @@
     "@types/jest": "^29.5.14",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^20.3.1",
+    "@types/node": "^20.17.12",
     "@types/supertest": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
