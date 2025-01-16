@@ -35,6 +35,9 @@ export class MovieRepository implements MovieInterface {
         if (!movie) {
             return false;
         }
+        if (movie.deletedAt) {
+            return false;
+        }
         movie.deletedAt = new Date(); // deletedAt 데이터 필드에 삭제 날짜 설정, 저장
         await this.em.flush()
         return true;

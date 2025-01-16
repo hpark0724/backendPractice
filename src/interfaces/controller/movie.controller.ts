@@ -35,7 +35,7 @@ export class MovieController {
         return this.movieService.create(title, genre, duration);
     }
 
-    @Delete(':id')
+    @Delete(':id/soft-delete')
     async softDelete(@Param('id') id: number) {
         return this.movieService.softDelete(id);
     }
@@ -46,12 +46,12 @@ export class MovieController {
         return this.movieService.updateMovie(id, updateData);
     }
     // TODO: implement search endpoints
-    @Get()
+    @Get('getGenre')
     async getGenre(@Body('genre') genre: string) {
         return this.movieService.getGenre(genre);
     }
     // TODO: implement admin-only hard delete endpoint
-    @Delete(':id')
+    @Delete(':id/hard-delete')
     async hardDelete(@Param('id') id: number) {
         return this.movieService.hardDelete(id);
     }

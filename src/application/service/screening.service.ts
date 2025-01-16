@@ -41,7 +41,7 @@ export class ScreeningService {
 
         const screening = this.screenRepository.createScreening({
             // movie,
-            movie: movie as Reference<Movie>,
+            movie: Reference.create(movie),
             startTime,
             theaterId,
             totalSeats,

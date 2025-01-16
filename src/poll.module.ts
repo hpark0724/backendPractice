@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { PollController } from 'src/interfaces/controller/poll.controller';
-import { PollService } from 'src/service/poll.service';
+import { PollService } from '../src/application/service/poll.service';
 
 @Module({
     imports: [],

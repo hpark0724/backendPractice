@@ -5,7 +5,9 @@ import { v4 as uuidv4 } from 'uuid';
 @Injectable()
 export class PollService {
 
-    private polls: Array<{ id: string; topic: string; choices: string[]; vote: number[] }> = [];
+    private polls: Array<{
+        toBeDefined(): any; id: string; topic: string; choices: string[]; vote: number[]
+    }> = [];
 
     createPoll(poll: { topic: string; choices: string[] }) {
         if (poll.choices.length === 0) {
@@ -15,7 +17,7 @@ export class PollService {
         const id = uuidv4(); // poll object에 대한 unique ID 부여
         const vote = poll.choices.map(() => 0); // poll object 길이만큼 배열 0으로 초기화해서 생성
         const pollWithId = { id, ...poll, vote };
-        this.polls.push(pollWithId);
+        this.polls.push(pollWithId as any);
         return pollWithId;
     }
 

@@ -31,6 +31,7 @@ export class MovieService {
         return movie;
     }
 
+
     async create(title: string, genre: string, duration: number) {
         return this.movieRepository.createUser({ title, genre, duration });
         // await this.em.persistAndFlush(movie);
@@ -70,5 +71,4 @@ export class MovieService {
         return this.movieRepository.findbyGenre(searchGenre, includeDeleted);
 
     }
-
 }
