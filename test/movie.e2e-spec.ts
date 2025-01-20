@@ -108,11 +108,11 @@ describe('MovieController (e2e)', () => {
         expect(response.body).toEqual(updatedMovie);
     });
 
-    it('/movies/genre (GET)', async () => {
+    it('/movies (GET)', async () => {
         mockMovieRepository.findbyGenre.mockResolvedValue(mockMovie2);
 
         const response = await request(app.getHttpServer())
-            .get('/movies/genre')
+            .get('/movies')
             .query({ genre: 'Drama' })
             .expect(200);
 
@@ -127,3 +127,5 @@ describe('MovieController (e2e)', () => {
             .expect(200);
     });
 });
+
+

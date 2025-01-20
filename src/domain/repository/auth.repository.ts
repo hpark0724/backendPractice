@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { MovieUser } from '../entity/movie-user.entity';
 import { AuthInterface } from '../../../src/application/interface/auth.interface';
 
-@Injectable()
+
 export class AuthRepository implements AuthInterface {
     constructor(private readonly em: EntityManager) { }
 

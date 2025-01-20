@@ -16,8 +16,15 @@ import { Movie } from '../../../src/domain/entity/movie.entity';
 export class MovieController {
     constructor(private readonly movieService: MovieService) { }
 
+    // @Get()
+    // async findAll(@Query('includeDeleted') includeDeleted?: boolean) {
+    //     return this.movieService.findAll(includeDeleted);
+    // }
     @Get()
-    async findAll(@Query('includeDeleted') includeDeleted?: boolean) {
+    async findAll(@Query('includeDeleted') includeDeleted?: boolean, @Query('genre') genre?: string,) {
+        if (genre) {
+            return this.getGenre(genre);
+        }
         return this.movieService.findAll(includeDeleted);
     }
 
@@ -46,11 +53,9 @@ export class MovieController {
         return this.movieService.updateMovie(id, updateData);
     }
     // TODO: implement search endpoints
-    @Get('genre')
+    @Get()
     async getGenre(@Query('genre') genre: string) {
-        // return this.movieService.getGenre(genre);
         const result = await this.movieService.getGenre(genre);
-        console.log('Service Result:', result);
         return result;
     }
 
