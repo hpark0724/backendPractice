@@ -30,7 +30,6 @@ export abstract class ScreeningRepository {
 
         await this.em.populate(screenings, ['movie']);
 
-
         const results: ScreeningMovieData[] = screenings.map((result) => {
             const movie = result.movie.unwrap();
             return {

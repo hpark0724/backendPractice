@@ -59,12 +59,8 @@ export class MovieRepository implements MovieInterface {
             qb.where({ deleteAt: null });
         }
 
-        // qb.andWhere({ genre: searchGenre })
         qb.andWhere(`MATCH(genre) AGAINST (? IN BOOLEAN MODE)`, [searchGenre]);
 
         return qb.getResultList();
-
     }
-
-
 }

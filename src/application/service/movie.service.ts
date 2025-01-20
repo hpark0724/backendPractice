@@ -1,5 +1,5 @@
 import { EntityManager } from '@mikro-orm/mysql';
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Movie } from '../../../src/domain/entity/movie.entity';
 import { MovieRepository } from '../../domain/repository/movie.repository';
 
@@ -31,7 +31,6 @@ export class MovieService {
         return movie;
     }
 
-
     async create(title: string, genre: string, duration: number) {
         return this.movieRepository.createUser({ title, genre, duration });
         // await this.em.persistAndFlush(movie);
@@ -45,8 +44,8 @@ export class MovieService {
     // TODO: implement update method
     async updateMovie(id: number, updateData: Partial<Movie>) {
         const movie = await this.movieRepository.findOneById(id);
-        if (!movie || !movie.deletedAt) {
-            throw new Error('Movie not found');
+        if (!movie || movie.deletedAt) {
+            throw new NotFoundException('Movie not found');
         }
         if (updateData.title !== undefined) {
             movie.title = updateData.title
@@ -69,6 +68,5 @@ export class MovieService {
     // TODO: implement search by genre
     async getGenre(searchGenre: string, includeDeleted: boolean = false) {
         return this.movieRepository.findbyGenre(searchGenre, includeDeleted);
-
     }
 }

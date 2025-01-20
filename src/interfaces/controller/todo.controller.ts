@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post, Put, Delete, Param, ParseIntPipe, UseGuards } from '@nestjs/common';
+import { CreateTodoDto, UpdateTodoDto } from '../dto/todo';
+import { AuthGuard } from '../../../src/guard/auth.guard';
 import { TodoService } from '../../../src/application/service/todo.service';
-import { CreateTodoDto, UpdateTodoDto } from 'src/interfaces/dto/todo';
-import { AuthGuard } from 'src/guard/auth.guard';
 
 @UseGuards(AuthGuard)
 @Controller('todo')

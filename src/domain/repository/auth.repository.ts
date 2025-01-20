@@ -1,8 +1,9 @@
-import { AuthInterface } from '../../../src/application/interface/auth.interface';
 import { EntityManager } from '@mikro-orm/mysql';
+import { Injectable } from '@nestjs/common';
 import { MovieUser } from '../entity/movie-user.entity';
-import { RegisterDto, LoginDto } from '../../interfaces/dto/auth';
+import { AuthInterface } from '../../../src/application/interface/auth.interface';
 
+@Injectable()
 export class AuthRepository implements AuthInterface {
     constructor(private readonly em: EntityManager) { }
 
@@ -10,16 +11,10 @@ export class AuthRepository implements AuthInterface {
         return await this.em.findOne(MovieUser, { email: userEmail });
     }
 
-    async register(registerBody: RegisterDto): Promise<{ email: string }> {
-        const newUser = await this.em.findOne(MovieUser, { email: registerBody.email });
-        await this.em.persistAndFlush(newUser);
-        return newUser
-    }
-
     async createUser(userData: Partial<MovieUser>): Promise<MovieUser> {
         const newUser = this.em.create(MovieUser, userData);
         await this.em.persistAndFlush(newUser);
         return newUser;
     }
-
 }
+

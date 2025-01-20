@@ -1,9 +1,7 @@
-import { MovieUser } from '../../domain/entity/movie-user.entity';
-import { RegisterDto } from '../../interfaces/dto/auth';
+import { MovieUser } from "src/domain/entity/movie-user.entity";
 
 
 export abstract class AuthInterface {
     findByEmail: (userEmail: string) => Promise<MovieUser | null>;
-    register: (registerBody: RegisterDto) => Promise<{ email: string }>;
     createUser: (userData: Partial<MovieUser>) => Promise<MovieUser>;
 }

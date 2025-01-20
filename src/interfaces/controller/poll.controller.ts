@@ -1,6 +1,7 @@
 import { Controller, Get, Body, Post, Param, Delete } from "@nestjs/common";
 import { PollService } from "../../../src/application/service/poll.service";
-import { CreatePollDto, VoteDto } from "src/interfaces/dto/poll";
+import { CreatePollDto, VoteDto } from "../dto/poll";
+
 
 @Controller('polls')
 export class PollController {

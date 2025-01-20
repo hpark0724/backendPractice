@@ -109,8 +109,8 @@ export class ReservationService {
     // TODO: implement reservation modification
     async modifyReservation(userId: number, modifyData: Partial<Reservation>) {
         const userReservation = await this.reservationRepository.findReservationById(userId);
-        if (!userReservation || !userReservation.deletedAt) {
-            throw new Error('Reservation not found');
+        if (!userReservation || userReservation.deletedAt) {
+            throw new NotFoundException('Reservation not found');
         }
         if (userReservation.user !== undefined) {
             userReservation.user = modifyData.user

@@ -46,10 +46,14 @@ export class MovieController {
         return this.movieService.updateMovie(id, updateData);
     }
     // TODO: implement search endpoints
-    @Get('getGenre')
-    async getGenre(@Body('genre') genre: string) {
-        return this.movieService.getGenre(genre);
+    @Get('genre')
+    async getGenre(@Query('genre') genre: string) {
+        // return this.movieService.getGenre(genre);
+        const result = await this.movieService.getGenre(genre);
+        console.log('Service Result:', result);
+        return result;
     }
+
     // TODO: implement admin-only hard delete endpoint
     @Delete(':id/hard-delete')
     async hardDelete(@Param('id') id: number) {

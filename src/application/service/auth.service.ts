@@ -1,11 +1,8 @@
-import { EntityManager } from '@mikro-orm/mysql';
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
-import { RegisterDto, LoginDto } from '../../interfaces/dto/auth'
-import { MovieUser } from '../../../src/domain/entity/movie-user.entity';
-import { AuthRepository } from '../../domain/repository/auth.repository';
-
 import * as crypto from 'crypto';
 import * as jwt from 'jsonwebtoken';
+import { AuthRepository } from '../../domain/repository/auth.repository';
+import { LoginDto, RegisterDto } from 'src/interfaces/dto/auth';
 
 const JWT_SECRET = 'secret';
 
@@ -61,5 +58,4 @@ export class AuthService {
         return { accessToken };
 
     }
-
 }

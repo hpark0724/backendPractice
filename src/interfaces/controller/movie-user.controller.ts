@@ -1,6 +1,7 @@
 import { Controller, Get, Body, Post, Param, Delete } from "@nestjs/common";
 import { MovieUserService } from '../../../src/application/service/movie-user.service';
-import { CreateMovieUserDto } from 'src/interfaces/dto/movie-user';
+import { CreateMovieUserDto } from "../dto/movie-user";
+
 
 @Controller("movie-user")
 export class MovieUserController {
