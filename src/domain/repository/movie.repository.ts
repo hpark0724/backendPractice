@@ -1,9 +1,10 @@
 import { EntityManager } from '@mikro-orm/mysql';
 import { EntityRepository, QueryOrder } from '@mikro-orm/core';
 import { Movie } from '../entity/movie.entity';
-import { MovieInterface } from '../../../src/application/interface/movie.interface';
+import { MovieInterface } from 'src/application/interface/movie.interface';
+import { Injectable } from '@nestjs/common';
 
-
+@Injectable()
 export class MovieRepository implements MovieInterface {
     constructor(private readonly em: EntityManager) { }
 
@@ -12,7 +13,7 @@ export class MovieRepository implements MovieInterface {
 
         // select in which is is not deleted (soft deletes)
         if (!includeDeleted) {
-            qb.where({ deleteAt: null });
+            qb.where({ deletedAt: null });
         }
 
         qb.select('*').orderBy({ createdAt: 'DESC' })

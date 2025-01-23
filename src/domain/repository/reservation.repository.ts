@@ -1,7 +1,7 @@
 import { QueryBuilder, EntityManager } from '@mikro-orm/mysql';
 import { Injectable } from '@nestjs/common';
 import { Reservation } from '../entity/reservation.entity';
-import { ReservationInterface } from '../../../src/application/interface/reservation.interface';
+import { ReservationInterface } from 'src/application/interface/reservation.interface';
 import { Screening } from '../../../src/domain/entity/screening.entity';
 
 @Injectable()
@@ -66,10 +66,10 @@ export class ReservationRepository implements ReservationInterface {
         return this.em.find(
             Reservation,
             { user: userId },
-            {
-                populate: ['screening', 'screening.movie'],
-                orderBy: { screening: { startTime: 'DESC ' } }
-            },
+            // {
+            //     populate: ['screening', 'screening.movie'],
+            //     orderBy: { screening: { startTime: 'DESC ' } }
+            // },
         );
     }
 

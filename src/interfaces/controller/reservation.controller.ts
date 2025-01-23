@@ -9,8 +9,8 @@ import {
     UseGuards,
     Query,
 } from '@nestjs/common';
-import { ReservationService } from '../../../src/application/service/reservation.service';
-import { ScreeningService } from '../../../src/application/service/screening.service';
+import { ReservationService } from 'src/application/service/reservation.service';
+import { ScreeningService } from 'src/application/service/screening.service';
 import { ReservationDetailDto } from 'src/interfaces/dto/reservation'
 import { ReservationHistoryTypeDto } from 'src/interfaces/dto/reservation'
 

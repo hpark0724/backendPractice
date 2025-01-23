@@ -1,7 +1,7 @@
 import { EntityManager } from '@mikro-orm/mysql';
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Movie } from '../../../src/domain/entity/movie.entity';
-import { MovieRepository } from '../../domain/repository/movie.repository';
+import { Movie } from 'src/domain/entity/movie.entity';
+import { MovieRepository } from 'src/domain/repository/movie.repository';
 
 @Injectable()
 export class MovieService {

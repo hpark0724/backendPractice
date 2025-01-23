@@ -1,6 +1,6 @@
 import { EntityManager, LockMode, Reference } from '@mikro-orm/mysql'
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Screening } from '../../../src/domain/entity/screening.entity';
+import { Screening } from 'src/domain/entity/screening.entity';
 import { Movie } from '../../domain/entity/movie.entity';
 import { ScreeningRepository } from '../../domain/repository/screening.repository';
 

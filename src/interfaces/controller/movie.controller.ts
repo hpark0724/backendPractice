@@ -8,8 +8,8 @@ import {
     Param,
     Query,
 } from '@nestjs/common';
-import { MovieService } from '../../../src/application/service/movie.service';
-import { Movie } from '../../../src/domain/entity/movie.entity';
+import { MovieService } from 'src/application/service/movie.service';
+import { Movie } from 'src/domain/entity/movie.entity';
 
 
 @Controller('movies')

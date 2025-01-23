@@ -1,8 +1,8 @@
 import { EntityManager } from '@mikro-orm/mysql';
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
-import { MovieUser } from '../../../src/domain/entity/movie-user.entity';
+import { MovieUser } from 'src/domain/entity/movie-user.entity';
 import { CreateMovieUserDto, CreateMovieUserResultDto } from '../../interfaces/dto/movie-user';
-import { MovieUserRepository } from '../../../src/domain/repository/movie-user.repository';
+import { MovieUserRepository } from 'src/domain/repository/movie-user.repository';
 import * as crypto from 'crypto';
 
 @Injectable()
