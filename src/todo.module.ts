@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
-import { TodoController } from 'src/interfaces/controller/todo.controller';
-import { TodoService } from 'src/service/todo.service';
+import { TodoController } from './interfaces/controller/todo.controller';
+import { TodoService } from './application/service/todo.service';
+// import { TodoController } from './interfaces/controller/todo.controller';
+// import { TodoService } from './application/service/todo.service';
 
 @Module({
     imports: [],

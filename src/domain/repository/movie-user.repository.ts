@@ -1,7 +1,7 @@
 import { EntityManager } from '@mikro-orm/core';
 import { Injectable } from '@nestjs/common';
 import { MovieUser } from '../entity/movie-user.entity';
-import { MovieUserInterface } from '../../../src/application/interface/movie-user.interface';
+import { MovieUserInterface } from 'src/application/interface/movie-user.interface';
 
 
 @Injectable()

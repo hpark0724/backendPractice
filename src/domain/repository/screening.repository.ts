@@ -1,7 +1,7 @@
-import { ScreeningRepositoryInterface, ScreeningMovieData, ScreeningData } from '../../../src/application/interface/screening.interface';
+import { ScreeningRepositoryInterface, ScreeningMovieData, ScreeningData } from 'src/application/interface/screening.interface';
 import { EntityManager, LockMode, Reference } from '@mikro-orm/mysql';
-import { Screening } from '../../../src/domain/entity/screening.entity';
-import { Movie } from '../../../src/domain/entity/movie.entity';
+import { Screening } from 'src/domain/entity/screening.entity';
+import { Movie } from 'src/domain/entity/movie.entity';
 
 export abstract class ScreeningRepository {
     constructor(private readonly em: EntityManager) { }
@@ -28,8 +28,7 @@ export abstract class ScreeningRepository {
             .orderBy({ startTime: 'ASC' })
             .getResultList()
 
-        await this.em.populate(screenings, ['movie']);
-
+        // await this.em.populate(screenings, ['movie']);
 
         const results: ScreeningMovieData[] = screenings.map((result) => {
             const movie = result.movie.unwrap();

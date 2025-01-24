@@ -1,22 +1,36 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { TodoModule } from './todo.module';
-import { AuthModule } from './auth.module';
-import { AuthController } from './interfaces/controller/auth.controller';
-import { AuthService } from './service/auth.service';
-import { PollModule } from './poll.module';
-import { PollService } from './service/poll.service';
-import { PollController } from './interfaces/controller/poll.controller';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
+import { ConfigModule } from '@nestjs/config';
+import { HttpModule } from '@nestjs/axios';
+import { TerminusModule } from '@nestjs/terminus';
 import config from './mikro-orm.config';
-import { MovieUserModule } from './movie-user.module';
+
+// Controllers
+import { AppController } from './app.controller';
+import { AuthController } from './interfaces/controller/auth.controller';
 import { MovieUserController } from './interfaces/controller/movie-user.controller';
-import { MovieUserService } from 'src/service/movie-user.service';
+import { PollController } from './interfaces/controller/poll.controller';
+import { HealthController } from './interfaces/controller/health.controller';
+import { MovieController } from './interfaces/controller/movie.controller';
+
+// Services
+import { AppService } from './app.service';
+import { AuthService } from './application/service/auth.service';
+import { MovieUserService } from './application/service/movie-user.service';
+import { PollService } from './application/service/poll.service';
+import { MovieService } from './application/service/movie.service';
+
+// Modules
+import { AuthModule } from './auth.module';
+import { MovieUserModule } from './movie-user.module';
+import { PollModule } from './poll.module';
+import { TodoModule } from './todo.module';
+import { MovieRepository } from './domain/repository/movie.repository';
 
 @Module({
-  imports: [MikroOrmModule.forRoot(config), TodoModule, AuthModule, PollModule, MovieUserModule],
-  controllers: [AppController, AuthController, PollController, MovieUserController],
-  providers: [AppService, AuthService, PollService, MovieUserService],
+  imports: [ConfigModule.forRoot(),MikroOrmModule.forRoot(config), HttpModule,TodoModule, AuthModule, PollModule, MovieUserModule, TerminusModule],
+  controllers: [AppController, AuthController, PollController, MovieUserController, HealthController, MovieController],
+  providers: [AppService, AuthService, PollService, MovieUserService, MovieService,  MovieRepository, ]
 })
 export class AppModule { }
+
