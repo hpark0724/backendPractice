@@ -1,0 +1,2 @@
+config:
+  target: 'http://localhost:3000' # 올바른 URL인지 확인
