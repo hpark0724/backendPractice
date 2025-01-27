@@ -30,6 +30,6 @@ scenarios:
       - loop:
           - get:
               url: '/movies'
-          - get:
-              url: '/poll'
+          # - get:
+          #     url: '/poll'
         count: 100
