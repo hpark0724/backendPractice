@@ -1,8 +1,10 @@
-FROM node:18-alpine
+FROM node:18
+
+RUN apt-get update && apt-get install -y curl
 
 WORKDIR /app
 
-COPY package.json ./
+COPY package.json pnpm-lock.yaml ./
 
 COPY . .
 

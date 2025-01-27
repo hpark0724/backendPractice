@@ -8,7 +8,7 @@ const config: Options<MySqlDriver> = {
   port: +process.env.DATABASE_PORT,
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
-  dbName: process.env.DATABASE_NAME,
+  dbName: process.env.DATABASE_NAME, 
   entities: ['dist/**/*.entity.js'],
   entitiesTs: ['src/**/*.entity.ts'],
   debug: true,
